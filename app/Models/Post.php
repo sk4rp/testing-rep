@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Jobs\PostJob;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
@@ -78,7 +79,8 @@ class Post extends Model
      */
     public function deletePost(int $id): JsonResponse
     {
-        self::query()->where('id', $id)->delete();
+        PostJob::dispatch($id);
+        //self::query()->where('id', $id)->delete();
         return response()->json([
             'message' => 'Post deleted successfully'
         ]);
