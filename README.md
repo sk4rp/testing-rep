@@ -7,6 +7,6 @@ php artisan migrate
 ```
 
 ```bash
-php artisan db:seed --class=PostSeeder
+php artisan db:seed --class=DatabaseSeeder
 ```
 

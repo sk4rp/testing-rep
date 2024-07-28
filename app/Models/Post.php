@@ -79,7 +79,10 @@ class Post extends Model
      */
     public function deletePost(int $id): JsonResponse
     {
+        // TODO: пример постановки в очередь
         PostJob::dispatch($id);
+
+
         //self::query()->where('id', $id)->delete();
         return response()->json([
             'message' => 'Post deleted successfully'
